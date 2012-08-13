@@ -2,8 +2,10 @@
 class root_user::setup (
   $password,
 ) {
-  user { 'root':
-    ensure   => 'present',
-    password => $password,
+  if $password {
+    user { 'root':
+      ensure   => 'present',
+      password => $password,
+    }
   }
 }
